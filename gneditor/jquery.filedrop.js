@@ -144,7 +144,9 @@
       builder += boundary;
       builder += crlf;
       builder += 'Content-Disposition: form-data; name="' + (paramname||"") + '"';
-      builder += '; filename="' + encodeURIComponent(filename) + '"';
+      // builder += '; filename="' + encodeURIComponent(filename) + '"';
+      // GNEDITOR: edited
+      builder += '; filename="' + filename + '"';
       builder += crlf;
 
       builder += 'Content-Type: ' + mime;
