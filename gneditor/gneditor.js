@@ -113,7 +113,9 @@ function bindTargetEvent() {
 function bindEditorEvent() {
     
     // ckeditor
-    $(".gnpopup .text-editor").ckeditor();
+    $(".gnpopup .text-editor").ckeditor({
+        enterMode: CKEDITOR.ENTER_BR
+    });
         
     // move all href attributes to data-href
     
