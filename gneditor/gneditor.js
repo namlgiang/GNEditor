@@ -656,7 +656,7 @@ function updateOrder(target) {
 }
 
 function transfer(from, to) {
-    if($(to).is("[gntext]")) {
+    if($(to).is("[gntext]") || $(to).is("[gnlink]")) {
         setText(to, $(from).val());
     }
     
@@ -730,8 +730,10 @@ function logout() {
 
 function sendPackage (package, callback) {
     // TODO: update path
+    /*
     $.post( "REPLACE_PATH_HERE", package )
     .done(function(data) {
         callback(data);
     });
+    */
 }
