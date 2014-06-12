@@ -20,9 +20,6 @@
         <div class="header">Target</div>
         <div class="editor">
             <textarea class="text-editor" cols="30" rows="10"></textarea>
-            <div class="link-editor">
-                Link: <input type="text">
-            </div>
             <div class="menu-editor">
                 <div class="tree"></div>
                 <div class="property">
@@ -46,6 +43,9 @@
                 <div class="bar">
                     <div class="progress"></div>
                 </div>
+            </div>
+            <div class="link-editor">
+                Link: <input type="text">
             </div>
         </div>
         <div class="control">

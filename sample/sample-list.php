@@ -19,7 +19,7 @@
     <a href="/">Home</a>
     <br><br>
     <br>
-    Demo list <button gnlist-add="demo-menu">Add new / clone the first item</button>
+    Demo list, drag to reorder <button gnlist-add="demo-menu">Add new / clone the first item</button>
     <br><br>
     
     <ul gnlist="sample-list">

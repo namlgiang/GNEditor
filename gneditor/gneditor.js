@@ -400,6 +400,12 @@ function bindImageDrop() {
         $(".gnpopup .header").html("Drop Image To Upload");
         $(".gnpopup .drop-image").addClass("active");         
         
+        if( link = detectParent(this, "gnlink") ) {
+            editorTarget.push({from: $(".gnpopup .link-editor input"), to: link});
+            $(".gnpopup .link-editor").addClass("active");
+            $(".gnpopup .link-editor input").val(getText(link));
+        }
+        
     });
     
     $(".gnpopup .drop-image").filedrop({

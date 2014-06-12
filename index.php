@@ -30,6 +30,7 @@
 <a href="sample/sample-list.php">Demo Edit List</a><br>
 <a href="sample/sample-menu.php">Demo Edit Menu</a><br>
 <a href="sample/sample-image.php">Demo Edit Image</a><br>
+<a href="sample/sample-full.php">Demo Full</a><br>
 
 <h4>TODO: Replace the path to controller in gneditor/gneditor.js</h2>
 <p>Optional requirement: Add dynamic link option to pages</p>
