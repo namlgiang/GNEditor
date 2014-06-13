@@ -571,7 +571,7 @@ function commit(target) {
         theId = detectParent(target, "gnitem").attr("gnitem");
         theList = detectParent(target, "gnlist").attr("gnlist");
         
-        if($(target).is("[gntext]"))
+        if($(target).is("[gntext], [gnlink]"))
             value = getText(target);
         if($(target).is("[gnimage]"))
             value = $(target).css("background-image");
