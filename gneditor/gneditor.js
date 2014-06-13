@@ -609,7 +609,7 @@ function getMenu(target) {
     var child = $(target).find(">li");
     for(var i=0; i<child.length; i++) {
         var el = {};
-        el.node = $("<p>").append($(child[i]).find("a:eq(0)")).html();
+        el.node = $("<p>").append($(child[i]).find("a:eq(0)").clone()).html();
         if($(child[i]).find(">ul").length>0)
             el.children = getMenu($(child[i]).find(">ul")[0]);
         res.push(el);
