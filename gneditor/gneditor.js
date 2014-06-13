@@ -555,13 +555,13 @@ function commit(target) {
         
         theId = $(target).attr("gnid");
         
-        if($(target).is("[gntext]"))
+        if($(target).is("[gntext], [gnlink]"))
             value = getText(target);
         if($(target).is("[gnimage]"))
             value = globalImageTemplateContent;
         
         package = {};
-        package.command = "commit " + $(target).is("[gntext]")?"text":"image";
+        package.command = "commit " + ($(target).is("[gntext]")?"text":"image");
         package.id = theId;
         package.value = value;
         
@@ -582,7 +582,7 @@ function commit(target) {
             value = globalImageTemplateContent;
         
         package = {};
-        package.command = "commit " + $(target).is("[gntext]")?"text":"image"  + " in list";
+        package.command = "commit " + ($(target).is("[gntext]")?"text":"image")  + " in list";
         package.list = theList;
         package.id = theId;
         package.prop = theProp;
