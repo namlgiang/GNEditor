@@ -268,9 +268,9 @@ function bindMenu(target) {
             targetEl = e.move_info.target_node.target.parent();
             switch(e.move_info.position) {
                 case "inside": 
-                    if($(targetEl).find("ul").length==0)
+                    if($(targetEl).find(">ul").length==0)
                         $(targetEl).append("<ul/>");
-                    $(targetEl).find("ul").prepend(movedEl);
+                    $(targetEl).find(">ul").prepend(movedEl);
                     break;
                 case "before":
                     $(targetEl).before(movedEl);
