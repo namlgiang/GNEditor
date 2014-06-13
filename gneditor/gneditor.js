@@ -101,6 +101,7 @@ function bindTargetEvent() {
         popup.addClass("visible");
         $(".gnpopup .header").html("Edit Menu");
         $(".gnpopup .menu-editor").addClass("active"); 
+        editorTarget.push({from: null, to: this});
         bindMenu(this);
         
     });
@@ -608,7 +609,7 @@ function getMenu(target) {
     var child = $(target).find(">li");
     for(var i=0; i<child.length; i++) {
         var el = {};
-        el.node = $(child[i]).html();
+        el.node = $("<p>").append($(child[i]).find("a:eq(0)")).html();
         if($(child[i]).find(">ul").length>0)
             el.children = getMenu($(child[i]).find(">ul")[0]);
         res.push(el);
@@ -741,10 +742,10 @@ function logout() {
 
 function sendPackage (package, callback) {
     // TODO: update path
-    /*
+
     $.post( "REPLACE_PATH_HERE", package )
     .done(function(data) {
         callback(data);
     });
-    */
+
 }
