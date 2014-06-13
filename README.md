@@ -5,7 +5,7 @@ TODO: complete send package function. just update the path to controller
 CONFIGURABLE VARIABLES
 
  - editMode                 : Enable/disable edit mode
- - uploadPath               : Path of files after upload
+ - uploadPath               : Path of files after upload. Change this corresponding to the logic in post_file.php
 
 FUNCTIONS
 
