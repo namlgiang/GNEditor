@@ -1,7 +1,7 @@
 // CONFIGURABLE VARIABLES
 
 editMode = true;            // boolean: set true to enable editor
-uploadPath = "/uploads/";   // path of image after saving
+uploadPath = "/uploads/";   // path of image after saving. change this corresponding to the logic in post_file.php
 
 /*
 
