@@ -48,6 +48,7 @@ editorTarget = [];
 shiftPhase = false;
 menuBinded = false;
 currentImage = null;
+globalImageTemplateContent = "";
 
 $(document).ready(function() {
     
@@ -557,7 +558,7 @@ function commit(target) {
         if($(target).is("[gntext]"))
             value = getText(target);
         if($(target).is("[gnimage]"))
-            value = $(target).css("background-image");
+            value = globalImageTemplateContent;
         
         package = {};
         package.command = "commit " + $(target).is("[gntext]")?"text":"image";
@@ -578,7 +579,7 @@ function commit(target) {
         if($(target).is("[gntext], [gnlink]"))
             value = getText(target);
         if($(target).is("[gnimage]"))
-            value = $(target).css("background-image");
+            value = globalImageTemplateContent;
         
         package = {};
         package.command = "commit " + $(target).is("[gntext]")?"text":"image"  + " in list";
@@ -674,6 +675,7 @@ function transfer(from, to) {
     
     if($(to).is("[gnimage]")) {
         $(to).css("background-image", "url('" + uploadPath + $(from).attr("filename") + "')");
+        globalImageTemplateContent = "url('" + uploadPath + $(from).attr("filename") + "')";
     }
 }
 
@@ -742,7 +744,7 @@ function logout() {
 
 function sendPackage (package, callback) {
     // TODO: update path
-
+    
     $.post( "REPLACE_PATH_HERE", package )
     .done(function(data) {
         callback(data);
