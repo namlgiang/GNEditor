@@ -247,19 +247,22 @@ function bindMenu(target) {
     
     printMenuEditor(jqData, root, property);
     
+    if(!menuBinded) {
+        //bind event when change value
+        $(root).bind(
+            'tree.click',
+            function(e) {            
+                $(property).find(".title").val(e.node.target.html());
+                $(property).find(".link").val(e.node.target.attr("data-href"));
+                $(property).find(".rel").val(e.node.target.attr("rel"));
+                $(property).find(".class").val(e.node.target.attr("class"));
+            }
+        );
+    }
+    
     $(".jqtree-element:eq(0)").click();
     
     if(menuBinded) return;
-    //bind event when change value
-    $(root).bind(
-        'tree.click',
-        function(e) {            
-            $(property).find(".title").val(e.node.target.html());
-            $(property).find(".link").val(e.node.target.attr("data-href"));
-            $(property).find(".rel").val(e.node.target.attr("rel"));
-            $(property).find(".class").val(e.node.target.attr("class"));
-        }
-    );
     
     $(root).bind(
         'tree.move',
