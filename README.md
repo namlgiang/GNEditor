@@ -37,7 +37,7 @@ PACKAGE STRUCTURE
  - "commit image in list"   : update an image in a list with gnlist=package.list, gnprop=package.prop, gnid=package.id and value=package.value
  - "commit menu"            : update a menu with gnmenu=package.menu and menu value encoded with JSON package.value
  
- - "add to list"            : request server to add an item to list with gnlist=package.list and an object package.data encoded with JSON. Server responses
+ - "add to list"            : request server to add an item to list with gnlist=package.list, order is package.order and an object package.data encoded with JSON. Server responses
                               object gnid.
  - "delete from list"       : request server to delete an item from list with gnlist=package.list and gnid=package.id
  - "update order"           : request server to update order of an item of a list with gnlist=package.list, gnid=package.id and new position package.moveTo
