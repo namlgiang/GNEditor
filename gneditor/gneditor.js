@@ -2,6 +2,7 @@
 
 editMode = true;            // boolean: set true to enable editor
 uploadPath = "/uploads/";   // path of image after saving. change this corresponding to the logic in post_file.php
+controllerPath = "REPLACE_PATH_HERE";
 
 /*
 
@@ -37,7 +38,7 @@ PACKAGE STRUCTURE
  - "commit image in list"   : update an image in a list with gnlist=package.list, gnprop=package.prop, gnid=package.id and value=package.value
  - "commit menu"            : update a menu with gnmenu=package.menu and menu value encoded with JSON package.value
  
- - "add to list"            : request server to add an item to list with gnlist=package.list and an object package.data encoded with JSON. Server responses
+ - "add to list"            : request server to add an item to list with gnlist=package.list, order is package.order and an object package.data encoded with JSON. Server responses
                               object gnid.
  - "delete from list"       : request server to delete an item from list with gnlist=package.list and gnid=package.id
  - "update order"           : request server to update order of an item of a list with gnlist=package.list, gnid=package.id and new position package.moveTo
@@ -94,6 +95,7 @@ function bindTargetEvent() {
         list = $("[gnlist='" + $(this).attr("gnlist-add") + "']");
         
         list.find("[gnitem]:eq(0)").clone().prependTo(list);
+        addToList(list.find("[gnitem]:eq(0)"));
     });
     
     //bind event for menus
@@ -158,11 +160,13 @@ function bindEditorEvent() {
     $(".gnpopup .duplicate").click(function() {
         item = detectParent(editorTarget[0].to, "gnitem");
         $(item).after($(item).clone());
+        addToList($(item).next());
         clearEditor();
     });
     
     $(".gnpopup .delete").click(function() {
         item = detectParent(editorTarget[0].to, "gnitem");
+        deleteFromList(item);
         $(item).remove();
         clearEditor();
     });
@@ -626,6 +630,7 @@ function addToList(target) {
     // package(list, obj)
     package.command = "add to list";
     package.list = detectParent(target, "gnlist").attr("gnlist");
+    package.order = $(target).index( "[gnlist='" +package.list+ "'] [gnitem]" );
     
     el = {};
     $(target).find("[gnprop]").each(function() {
@@ -745,9 +750,16 @@ function logout() {
 function sendPackage (package, callback) {
     // TODO: update path
     
-    $.post( "REPLACE_PATH_HERE", package )
+    $.post( controllerPath, package )
     .done(function(data) {
         callback(data);
     });
+
+}
+
+function sendPackage (package, callback) {
+    // TODO: update path
+    
+    $.post( controllerPath, package );
 
 }
