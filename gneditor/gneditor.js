@@ -486,7 +486,7 @@ function refresh(target) {
         package.command = "get text";
         package.id = $(target).attr("gnid");
         
-        sendPackage(package, function(text) {
+        sendPackageWithCallBack(package, function(text) {
             if($(target).is("[gntext]"))
                 setText(target, text);
             if($(target).is("[gnimage]"))
@@ -499,7 +499,7 @@ function refresh(target) {
         package.command = "get list";
         package.list = $(target).attr("gnlist");
         
-        sendPackage(package, function(data) {
+        sendPackageWithCallBack(package, function(data) {
             
             list = $.parseJSON(data);
         
@@ -524,7 +524,7 @@ function refresh(target) {
         package.command = "get menu";
         package.menu = $(target).attr("gnmenu");
         
-        sendPackage(package, function(data) {
+        sendPackageWithCallBack(package, function(data) {
             
             menu = $.parseJSON(data);
             printMenu(menu, target);
@@ -642,7 +642,7 @@ function addToList(target) {
     
     package.data = JSON.stringify(el);
     
-    sendPackage(package, function(theId) {
+    sendPackageWithCallBack(package, function(theId) {
         $(target).attr("gnitem", theId);
     });
 }
@@ -747,8 +747,7 @@ function logout() {
     sendPackage(package);
 }
 
-function sendPackage (package, callback) {
-    // TODO: update path
+function sendPackageWithCallBack (package, callback) {
     
     $.post( controllerPath, package )
     .done(function(data) {
@@ -757,8 +756,7 @@ function sendPackage (package, callback) {
 
 }
 
-function sendPackage (package, callback) {
-    // TODO: update path
+function sendPackage (package) {
     
     $.post( controllerPath, package );
 
